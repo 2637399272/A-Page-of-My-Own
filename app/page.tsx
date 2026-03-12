@@ -17,16 +17,16 @@ export default function PersonalSite() {
   const [isFlipping, setIsFlipping] = useState(false)
   const [flipDirection, setFlipDirection] = useState<"left" | "right">("right")
 
-  const handlePageChange = (newPage: PageType) => {
+  const handlePageChange = (newPage: string) => {
     if (newPage === currentPage || isFlipping) return
 
     const currentIndex = pages.indexOf(currentPage)
-    const newIndex = pages.indexOf(newPage)
+    const newIndex = pages.indexOf(newPage as PageType)
     setFlipDirection(newIndex > currentIndex ? "right" : "left")
     setIsFlipping(true)
 
     setTimeout(() => {
-      setCurrentPage(newPage)
+      setCurrentPage(newPage as PageType)
       setTimeout(() => {
         setIsFlipping(false)
       }, 600)
